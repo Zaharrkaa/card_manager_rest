@@ -15,6 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Класс с реализацией бизнес логики связанной с пользователями
+ */
 @Service
 @Transactional(readOnly = true)
 public class UserService {

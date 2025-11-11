@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Контроллер с эндпоинтами для управления пользователями
+ */
 @RestController
 @RequestMapping("/users")
 @Tag(name = "User controller", description = "Контроллер для управления пользователями (доступен только админу)")

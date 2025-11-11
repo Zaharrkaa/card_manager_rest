@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Контроллер с эндпоинтами для клиентских операций
+ */
 @RestController
 @RequestMapping("/client")
 @Tag(name = "Client controller", description = "Контроллер для операций клиента")

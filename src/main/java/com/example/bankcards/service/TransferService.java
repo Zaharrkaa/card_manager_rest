@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+/**
+ * Класс с реализацией бизнес логики прерводов между счетами
+ */
 @Service
 public class TransferService {
 

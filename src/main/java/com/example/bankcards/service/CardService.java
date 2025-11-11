@@ -19,6 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Класс с реализацией бизнес логики связанной с картами
+ */
 @Service
 @Transactional(readOnly = true)
 public class CardService {
