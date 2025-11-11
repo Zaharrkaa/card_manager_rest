@@ -80,7 +80,7 @@ public class CardService {
      * @param size
      * @param number
      * @param ownerName
-     * @return
+     * @return Страница с заданным количеством объектов а так же информацию о других страницах
      */
     public Page<CardDto> findByNumberLike(int page, int size, String number, String ownerName) {
         Optional<User> user = userRepository.findByUsername(ownerName);

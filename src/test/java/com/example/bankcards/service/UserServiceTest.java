@@ -35,16 +35,16 @@ public class UserServiceTest {
     @Test
     void save() {
         String username = "testUsername";
-        String password = "testPassword";
-        AuthDto authDto = new AuthDto(username, password);
-        String encodedPassword = "testEncodedPassword";
+        String rawPassword = "testPassword";
+        String encodedPassword = "encodedPassword123";
         String role = Role.ROLE_USER.toString();
-        User user = new User(username, encodedPassword, role);
-        user.setRole(role);
-        when(userMapper.toUser(authDto)).thenReturn(user);
-        when(bCryptPasswordEncoder.encode(user.getPassword())).thenReturn(encodedPassword);
+        AuthDto authDto = new AuthDto(username, rawPassword);
+        User userFromMapper = new User(username, rawPassword, null);
+        User userToSave = new User(username, encodedPassword, role);
+        when(userMapper.toUser(authDto)).thenReturn(userFromMapper);
+        when(bCryptPasswordEncoder.encode(rawPassword)).thenReturn(encodedPassword);
         userService.save(authDto);
-        verify(userRepository).save(user);
+        verify(userRepository).save(userFromMapper);
     }
 
     @Test
@@ -58,11 +58,5 @@ public class UserServiceTest {
         verify(userRepository).delete(user);
     }
 
-    @Test
-    void findAllWithoutCards() {
-    }
 
-    @Test
-    void findAllWithCards() {
-    }
 }
