@@ -16,12 +16,15 @@ public class JWTService {
 
     @Value("${jwt.secret-key}")
     private String SECRET;
+    @Value("${jwt.key-timelife}")
+    private int keyLifeTime;
+
 
     public String generateToken(String username) {
         return Jwts.builder()
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 1000*60*30))
+                .expiration(new Date(System.currentTimeMillis() + keyLifeTime))
                 .signWith(getSecretKey()).compact();
 
     }

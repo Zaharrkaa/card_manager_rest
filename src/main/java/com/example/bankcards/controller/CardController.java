@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * Контроллер с эндпоинтами для управления картами
+ */
 @RestController
 @RequestMapping("/cards")
 @Tag(name = "Card controller", description = "Контроллер для управления картами (доступен только админу)")

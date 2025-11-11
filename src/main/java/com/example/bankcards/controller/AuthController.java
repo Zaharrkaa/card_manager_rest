@@ -40,8 +40,8 @@ public class AuthController {
     }
 
     /**
-     *
-     * @param authDto Данные для аутентификации
+     * метод контроллера для регистрации пользователя в системе
+     * @param authDto Данные для регистрации
      * @param bindingResult Контейнер для ошибок
      * @return HTTP ответ с ответом об успешной регистрации либо ошибкой
      */
@@ -62,6 +62,11 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
     }
 
+    /**
+     * метод контроллера для выдачи пользователю токена
+     * @param authdto данные для аутентификации
+     * @return возвращает токен если пользователь есть в системе либо сообщение об ошибке
+     */
     @PostMapping("/token")
     @Operation(summary = "Выдача токена", description = "Аутентифицирует пользователья и выдаёт токен")
     @ApiResponses(value = {

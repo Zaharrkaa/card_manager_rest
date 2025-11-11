@@ -3,6 +3,7 @@
 services:
   bank_db:
     container_name: bank_db
+    restart: on-failure
     image: postgres:15
     environment:
       POSTGRES_USER: postgres
@@ -12,6 +13,17 @@ services:
       - bank_db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  app:
+    build: .
+    restart: on-failure
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://bank_db:5432/bank_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: secret_pass
+    ports:
+      - "8080:8080"
+    depends_on:
+      - bank_db
 
 volumes:
   bank_db:
